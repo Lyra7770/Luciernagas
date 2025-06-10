@@ -14,15 +14,20 @@ let fondo = paleta[0];
 let texto = paleta[1];
 
 function setup() {
-  createCanvas(800, 600);
+  createCanvas(windowWidth, windowHeight);
   for (let i = 0; i < cantidad; i++) {
     luces.push(new Luz());
   }
   textFont('Arial', 16);
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 function draw() {
-  background(fondo[0], fondo[1], fondo[2], 40); // fondo con transparencia
+  // Fondo sin transparencia para limpiar cada frame (sin rastro)
+  background(fondo[0], fondo[1], fondo[2]);
 
   for (let l of luces) {
     l.actualizar();
